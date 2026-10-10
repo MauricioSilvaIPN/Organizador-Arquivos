@@ -13,10 +13,11 @@ public class DirOrganization
         //dirClass.GetSpecificFiles(".png", "/home/mauricio/Documentos/");
     }
 
+#region FILE LOGICS
     public void IdentifyFile()
     {
-        List<String> fileTypes = [".png", ".pdf", ".txt", ".mp4", ".wav"];
-        List<String> dirNames = ["Documentos", "Downloads", "Músicas", "Vídeos", "Imagens"];
+        List<String> fileTypes = [".png", ".pdf", ".txt", ".mp4", ".wav", ".jpg", ".jpeg"];
+        List<String> dirNames = ["Documentos/", "Músicas/", "Vídeos/", "Imagens/"];
 
         
 
@@ -33,4 +34,5 @@ public class DirOrganization
             File.Move(file, $"{dirDirection} {fileType}", overwrite:false);
         }
     }
+#endregion
 }
