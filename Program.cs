@@ -8,18 +8,29 @@ public class DirOrganization
 {
     static void Main(string[] args)
     {
-        var func = new DirOrganization();
+        var dirClass = new DirOrganization();
 
-        func.IdentifyFolder();
+        //dirClass.GetSpecificFiles(".png", "/home/mauricio/Documentos/");
     }
 
-    public void IdentifyFolder()
+    public void IdentifyFile()
     {
-        string[] folders = Directory.GetDirectories(@"/home/mauricio/", "D*", SearchOption.TopDirectoryOnly);
+        List<String> fileTypes = [".png", ".pdf", ".txt", ".mp4", ".wav"];
+        List<String> dirNames = ["Documentos", "Downloads", "Músicas", "Vídeos", "Imagens"];
+
         
-        foreach(string folder in folders)
+
+    }
+
+    public void GetSpecificFiles(string fileType, string dirDirection)
+    {
+        string[] files = Directory.GetFiles(@"/home/mauricio/Documentos/teste/", $"*{fileType}");
+
+
+        foreach(string file in files)
         {
-            Console.WriteLine(folder);
+            //Console.WriteLine(file);
+            File.Move(file, $"{dirDirection} {fileType}", overwrite:false);
         }
     }
 }
