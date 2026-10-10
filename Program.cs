@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Organizador;
 
@@ -10,7 +12,7 @@ public class DirOrganization
     {
         var dirClass = new DirOrganization();
 
-        //dirClass.GetSpecificFiles(".png", "/home/mauricio/Documentos/");
+        dirClass.IdentifyFile();
     }
 
 #region FILE LOGICS
@@ -19,19 +21,51 @@ public class DirOrganization
         List<String> fileTypes = [".png", ".pdf", ".txt", ".mp4", ".wav", ".jpg", ".jpeg"];
         List<String> dirNames = ["Documentos/", "Músicas/", "Vídeos/", "Imagens/"];
 
+        string currentDir;
+        string path;
+
         
+        foreach (string file in fileTypes)
+        {
+            switch (file)
+            {
+                case ".png":
+                case ".jpg":
+                case ".jpeg":
+                    currentDir = dirNames[3];
+                    path = @$"/home/mauricio/{currentDir}";
+                    break;
+
+                case ".mp4":
+                    currentDir = dirNames[2];
+                    path = @$"/home/mauricio/{currentDir}";
+                    break;
+                
+                case ".wav":
+                    currentDir = dirNames[1];
+                    path = @$"/home/mauricio/{currentDir}";
+                    break;
+
+                default:
+                    currentDir = dirNames[0];
+                    path = @$"/home/mauricio/{currentDir}";
+                    break;
+            }
+
+            GetSpecificFiles(file, path);
+        }
 
     }
 
+
     public void GetSpecificFiles(string fileType, string dirDirection)
     {
-        string[] files = Directory.GetFiles(@"/home/mauricio/Documentos/teste/", $"*{fileType}");
+        string[] files = Directory.GetFiles("destinofinal", $"*{fileType}");
 
 
         foreach(string file in files)
         {
-            //Console.WriteLine(file);
-            File.Move(file, $"{dirDirection} {fileType}", overwrite:false);
+            File.Move(file, $"{dirDirection} {fileType}", overwrite:true);
         }
     }
 #endregion
