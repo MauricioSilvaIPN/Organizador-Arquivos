@@ -22,6 +22,7 @@ public class DirOrganization
         List<String> dirNames = ["Documentos/", "Músicas/", "Vídeos/", "Imagens/"];
 
         string currentDir;
+        string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         string path;
 
         
@@ -33,22 +34,22 @@ public class DirOrganization
                 case ".jpg":
                 case ".jpeg":
                     currentDir = dirNames[3];
-                    path = @$"/home/mauricio/{currentDir}";
+                    path = Path.Combine(userPath, currentDir);
                     break;
 
                 case ".mp4":
                     currentDir = dirNames[2];
-                    path = @$"/home/mauricio/{currentDir}";
+                    path = Path.Combine(userPath, currentDir);
                     break;
                 
                 case ".wav":
                     currentDir = dirNames[1];
-                    path = @$"/home/mauricio/{currentDir}";
+                    path = Path.Combine(userPath, currentDir);
                     break;
 
                 default:
                     currentDir = dirNames[0];
-                    path = @$"/home/mauricio/{currentDir}";
+                    path = Path.Combine(userPath, currentDir);
                     break;
             }
 
@@ -62,10 +63,13 @@ public class DirOrganization
     {
         string[] files = Directory.GetFiles("destinofinal", $"*{fileType}");
 
+        
 
         foreach(string file in files)
         {
-            File.Move(file, $"{dirDirection} {fileType}", overwrite:true);
+            string filename = Path.GetFileName(file);
+
+            File.Move(file, Path.Combine(dirDirection, filename), overwrite:true);
         }
     }
 #endregion
