@@ -8,11 +8,13 @@ namespace Organizador;
 
 public class DirOrganization
 {
+    string destinyPath = "";
+
     static void Main(string[] args)
     {
         var dirClass = new DirOrganization();
 
-        dirClass.IdentifyFile();
+        dirClass.ShowAndGetInput();
     }
 
 #region FILE LOGICS
@@ -61,7 +63,7 @@ public class DirOrganization
 
     public void GetSpecificFiles(string fileType, string dirDirection)
     {
-        string[] files = Directory.GetFiles("destinofinal", $"*{fileType}");
+        string[] files = Directory.GetFiles(destinyPath, $"*{fileType}");
 
         
 
@@ -70,6 +72,29 @@ public class DirOrganization
             string filename = Path.GetFileName(file);
 
             File.Move(file, Path.Combine(dirDirection, filename), overwrite:true);
+        }
+    }
+
+    private void ShowAndGetInput()
+    {
+        Console.WriteLine("=====================================");
+        Console.WriteLine("Insira um caminho válido");
+        Console.WriteLine("=====================================");
+
+        string? finalPath = Console.ReadLine();
+
+        while (!Directory.Exists(finalPath) || finalPath.Length <= 0)
+        {
+            Console.WriteLine("Esse caminho é inválido, insira um correto:");
+            finalPath = Console.ReadLine();
+        }
+
+        if (Directory.Exists(finalPath))
+        {
+            Console.WriteLine($"Obrigado por inserir o caminho {finalPath}");
+            destinyPath = finalPath;
+            IdentifyFile();
+            Console.WriteLine($"Seus arquivos dentro da pasta {finalPath}, já foram organizados em suas respectivas pastas conforme extensão dos arquivos");
         }
     }
 #endregion
