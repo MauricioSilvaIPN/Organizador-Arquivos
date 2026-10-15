@@ -4,6 +4,15 @@ Por exemplo: Se a extensão for **.png** ela irá para o diretório **Imagens** 
 O programa não possui muitas extensões, mas vai para seus respectivos repositórios
 
 ## Como rodar o programa:
-Dentro do código na variável **files** no campo onde está **"destinofinal"**, você deve colocar <br>
-o caminho do arquivo que você deseja que a organização seja feita, após colocar o caminho do arquivo <br>
-você pode rodar o programa que ele fará a organização automaticamente.
+Rodando o código ele irá pedir que você insira um caminho válido<br>
+o caminho precisa estar no formato correto para que dentro dessa pasta ele faça a organização<br>
+dos arquivos conforme suas respectivas extensões, o formato precisa estar mais ou menos parecido com:<br>
+
+### Linux:
+**\home\nome-do-usuario\pasta-escolhida**
+
+### Windows:
+**C:\Users\nome-do-usuário\pasta-escolhida**
+
+### MacOS:
+**/Users/nome-do-usuario/pasta-escolhida**
