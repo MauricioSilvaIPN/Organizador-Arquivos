@@ -21,7 +21,6 @@ public class DirOrganization
     public void IdentifyFile()
     {
         List<String> fileTypes = [".png", ".pdf", ".txt", ".mp4", ".wav", ".jpg", ".jpeg"];
-        List<String> dirNames = ["Documentos/", "Músicas/", "Vídeos/", "Imagens/"];
 
         string currentDir;
         string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -35,22 +34,22 @@ public class DirOrganization
                 case ".png":
                 case ".jpg":
                 case ".jpeg":
-                    currentDir = dirNames[3];
+                    currentDir = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
                     path = Path.Combine(userPath, currentDir);
                     break;
 
                 case ".mp4":
-                    currentDir = dirNames[2];
+                    currentDir = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
                     path = Path.Combine(userPath, currentDir);
                     break;
                 
                 case ".wav":
-                    currentDir = dirNames[1];
+                    currentDir = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
                     path = Path.Combine(userPath, currentDir);
                     break;
 
                 default:
-                    currentDir = dirNames[0];
+                    currentDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                     path = Path.Combine(userPath, currentDir);
                     break;
             }
