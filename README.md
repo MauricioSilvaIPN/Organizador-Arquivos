@@ -1,7 +1,7 @@
 ## O que este programa faz:
 Este programa realiza o ajuste dos arquivos para seus respectivos diretórios conforme sua extensão.<br>
 Por exemplo: Se a extensão for **.png** ela irá para o diretório **Imagens** <br>
-O programa não possui muitas extensões, mas vai para seus respectivos repositórios
+O programa não possui muitas extensões, mas vai para seus respectivos diretórios
 
 ## Como rodar o programa:
 Rodando o código ele irá pedir que você insira um caminho válido<br>
